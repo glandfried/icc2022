@@ -5,7 +5,7 @@ nombre.R <-  sys.frame(1)$ofile
 require(tools)
 nombre <- "smoothing"
 nombre <- print(file_path_sans_ext(nombre.R))
-pdf(paste0(nombre,".pdf"), width = 8, height = 5  )
+pdf(paste0(nombre,".pdf"), width = 10, height = 5  )
 setwd(this.dir)
 ###############################
 
@@ -54,19 +54,19 @@ data$wp_a_2_mu < data$wp_b_1_mu + data$d_div_1_mu
 # A1
 # Post
 plot(s,dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]))),axes = F, ann = F, lwd=14, col=rgb(0,0,0,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]))),axes = F, ann = F, lwd=21, col=rgb(0,0,0,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
-lines(s,dnorm(s, data$p_a_1_mu[1], data$p_a_1_sigma[1]), lwd=14,col=rgb(0.6,0.25,0.25 )) 
+lines(s,dnorm(s, data$p_a_1_mu[1], data$p_a_1_sigma[1]), lwd=21,col=rgb(0.6,0.25,0.25 )) 
 for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$p_a_1_mu[i], data$p_a_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]))),axes = F, ann = F, lwd=14, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_1_mu[n], data$p_a_1_sigma[n]))),axes = F, ann = F, lwd=21, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # within
 plot(s,dnorm(s, data$wp_a_1_mu[n], data$wp_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0,0,0,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0,0,0,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.6,tck=0.015)
 lines(s,dnorm(s, data$wp_a_1_mu[1], data$wp_a_1_sigma[1]), lwd=7,col=rgb(0.6,0.25,0.25)) 
@@ -74,11 +74,11 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$wp_a_1_mu[i], data$wp_a_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$wp_a_1_mu[n], data$wp_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # Likelihood approx
 plot(s,dnorm(s, data$lh_a_1_mu[n], data$lh_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0,0,0,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
@@ -87,7 +87,7 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$lh_a_1_mu[i], data$lh_a_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$lh_a_1_mu[n], data$lh_a_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 
@@ -95,22 +95,22 @@ segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # A2
 # Post
 plot(s,dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col = rgb(0,0,0,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col = rgb(0,0,0,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
 lines(s,dnorm(s, data$p_a_2_mu[1], data$p_a_2_sigma[1]),type="l"
-      ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[1], data$p_a_2_sigma[1]))),axes = F, ann = F, lwd=14, col = rgb(0.6,0.25,0.25))
+      ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[1], data$p_a_2_sigma[1]))),axes = F, ann = F, lwd=21, col = rgb(0.6,0.25,0.25))
 for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$p_a_2_mu[i], data$p_a_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=14, col = rgb(0.25,0.6,0.25,1))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=21, col = rgb(0.25,0.6,0.25,1))
 
 
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # within
 plot(s,dnorm(s, data$wp_a_2_mu[n], data$wp_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0,0,0,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0,0,0,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
 lines(s,dnorm(s, data$wp_a_2_mu[1], data$wp_a_2_sigma[1]), lwd=7,col=rgb(0.6,0.25,0.25))
@@ -118,11 +118,11 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$wp_a_2_mu[i], data$wp_a_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$wp_a_2_mu[n], data$wp_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # Likelihood approx
 plot(s,dnorm(s, data$lh_a_2_mu[n], data$lh_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7,col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
@@ -131,25 +131,25 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$lh_a_2_mu[i], data$lh_a_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$lh_a_2_mu[n], data$lh_a_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7,col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # B1
 # Post
 plot(s,dnorm(s, data$p_b_1_mu[n], data$p_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7,col=rgb(0.25,0.6,0.25,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7,col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
-lines(s,dnorm(s, data$p_b_1_mu[1], data$p_b_1_sigma[1]), lwd=14,col=rgb(0.6,0.25,0.25 )) 
+lines(s,dnorm(s, data$p_b_1_mu[1], data$p_b_1_sigma[1]), lwd=21,col=rgb(0.6,0.25,0.25 )) 
 for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$p_b_1_mu[i], data$p_b_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$p_b_1_mu[n], data$p_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=14,col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=21,col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # within
 plot(s,dnorm(s, data$wp_b_1_mu[n], data$wp_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
 lines(s,dnorm(s, data$wp_b_1_mu[1], data$wp_b_1_sigma[1]), lwd=7,col=rgb(0.6,0.25,0.25 )) 
@@ -157,11 +157,11 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$wp_b_1_mu[i], data$wp_b_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$wp_b_1_mu[n], data$wp_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # Likelihood approx
 plot(s,dnorm(s, data$lh_b_1_mu[n], data$lh_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
@@ -170,25 +170,25 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$lh_b_1_mu[i], data$lh_b_1_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$lh_b_1_mu[n], data$lh_b_1_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # B2
 # Post
 plot(s,dnorm(s, data$p_b_2_mu[n], data$p_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
-lines(s,dnorm(s, data$p_b_2_mu[1], data$p_b_2_sigma[1]), lwd=14,col=rgb(0.6,0.25,0.25))
+lines(s,dnorm(s, data$p_b_2_mu[1], data$p_b_2_sigma[1]), lwd=21,col=rgb(0.6,0.25,0.25))
 for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$p_b_2_mu[i], data$p_b_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$p_b_2_mu[n], data$p_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=14, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=21, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # within
 plot(s,dnorm(s, data$wp_b_2_mu[n], data$wp_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
 lines(s,dnorm(s, data$wp_b_2_mu[1], data$wp_b_2_sigma[1]), lwd=7,col=rgb(0.6,0.25,0.25)) 
@@ -196,11 +196,11 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$wp_b_2_mu[i], data$wp_b_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$wp_b_2_mu[n], data$wp_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n]))),axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # Likelihood approx
 plot(s,dnorm(s, data$lh_b_2_mu[n], data$lh_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25,0))
 axis(side=1, labels=NA,cex.axis=0.6,tck=0.015, line=-2.2)
 axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
@@ -209,7 +209,7 @@ for (i in seq(2,n-1)){
   lines(s,dnorm(s, data$lh_b_2_mu[i], data$lh_b_2_sigma[i]), lwd=7,col=rgb(0,0,0,((i/n)+0.33)/1.33 )) 
 }
 lines(s,dnorm(s, data$lh_b_2_mu[n], data$lh_b_2_sigma[n]),type="l"
-     ,ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
+     ,xlim=c(-5,5),ylim=c(-0.05,max(dnorm(s, data$p_a_2_mu[n], data$p_a_2_sigma[n])))
      ,axes = F, ann = F, lwd=7, col=rgb(0.25,0.6,0.25))
 segments(x0=0,y0=0,y1=1, lty=1,lwd=3)
 # Prior
@@ -221,6 +221,7 @@ axis(lwd=0,side=1, at=0,cex.axis=5,line=-0.5,tck=0.015)
 #######################################
 # end 
 dev.off()
+system(paste("pdfcrop -m '0 0 0 0'",paste0(nombre,".pdf")))
 setwd(oldwd)
 par(oldpar, new=F)
 #########################################

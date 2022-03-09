@@ -57,30 +57,14 @@
 
 \addtolength{\textwidth}{40pt}
 \addtolength{\oddsidemargin}{-40pt}
- 
-\begin{document}
-% 
-% \begin{textblock}{100}(18,23.25)
-%  \includegraphics[width=0.1\textwidth]{auxliar/images/dc_color.pdf} 
-%  \end{textblock}
-% \begin{textblock}{100}(30,24)
-%  \includegraphics[width=0.1\textwidth]{auxliar/images/icc-logo.jpg} 
-%  \end{textblock}
-%  \begin{textblock}{100}(49,24)
-%  \includegraphics[width=0.1\textwidth]{auxliar/images/logo_licar.pdf} 
-%  \end{textblock}
-%   \begin{textblock}{100}(61,24)
-%  \includegraphics[width=0.1\textwidth]{auxliar/images/logo_version_02.pdf} 
-%  \end{textblock}
-%  
-%----------------------------------------------------------------------------------------
-%	POSTER HEADER 
-%----------------------------------------------------------------------------------------
 
-% The header is divided into two boxes:
-% The first is 75% wide and houses the title, subtitle, names, university/organization and contact information
-% The second is 25% wide and houses a logo for your university/organization or a photo of you
-% The widths of these boxes can be easily edited to accommodate your content as you see fit
+\addtolength{\topmargin}{-1.5cm}
+% \addtolength{\textwidth}{10pt}
+\addtolength{\textheight}{4cm}
+% \addtolength{\oddsidemargin}{-5pt}
+
+\begin{document}
+
 \centering \fontsize{90}{90} \textbf{Bayesian inference: learning and  evolution} \\[0.5cm]  % Title
 \LARGE \textbf{Gustavo Landfried}  \ \ \  \texttt{glandfried@dc.uba.ar} \\
 \large 1. Universidad de Buenos Aires. Facultad de Ciencias Exactas y Naturales. Departamento de Computaci\'on. Buenos Aires, Argentina \\ 
@@ -125,7 +109,7 @@
 \justify 
 
 
-\en{The TTT model is the current state-of-the-art skill estimator in the video game industry: it provides reliable estimates of initial skill and guarantees historical comparability. }%
+\en{The TTT model is the current state-of-the-art skill estimator in the video game industry: it provides reliable initial skill estimates and guarantees historical comparability. }%
 \es{El modelo TTT es el estimador de habilidad actualmente estado-del-arte en la industria del video juego: ofrece estimaciones fiables de la habilidad inicial y garantiza la comparabilidad histórica. }%
 %\en{Unlike the most commonly used skill estimators in the video game industry (Elo, TrueSkill, Glicko), the TTT model obtains reliable initial skill estimates and guarantees historical comparability by propagating the whole information in a single Bayesian network. }%
 %\es{A diferencia de los estimadores de habilidad más utilizados en la industria del video juego (e.g Elo, TrueSkill, Glicko), el modelo TTT obtiene estimaciones fiables de la habilidad inicial y garantiza la comparabilidad histórica gracias a que propaga toda la información histórica en una única red bayesiana. }%
@@ -191,6 +175,8 @@
 % \en{ most commons  (such as Elo and TrueSkill) cannot obtain reliable initial estimates or guarantee comparability between estimates distant in time and space. }%because they do not propagate historical information properly through the system. }%
 % \es{Sin embargo, los más utilizados (Elo, Glicko y TrueSkill) tienen problemas asocia. }%debido a que no propagan la información histórica apropiadamente a través del sistema. }%
 
+\vspace{0.5cm}
+
 \textbf{\en{Methods}\es{Métodos}}
 \en{The TTT model propagates all historical information in a single Bayesian network providing better estimates, }%
 \es{El modelo TTT propaga toda la información histórica en una única red bayesiana ofreciendo mejores estimaciones, }%
@@ -198,18 +184,18 @@
 % \en{Nothing prevents probabilistic models from making inference using information from the future, something we usually do. }%
 % \es{Nada impide que los modelos probabilísiticos realicen inferencia usando información del futuro, algo que intuitivamente hacemos. }%
 % %
-\vspace{-2cm}
+\vspace{-1.5cm}
 \begin{figure}[H]
   \centering
   \scalebox{1.5}{
     \tikz{ %
       \node[latent] (s10) {$s_{a_0}$} ;
       %
-      \node[latent,  below=of s10,yshift=-0.7cm] (s11) {$s_{a_1}$} ;
+      \node[latent,  below=of s10,yshift=0cm] (s11) {$s_{a_1}$} ;
       
       \node[latent, right=of s11, xshift=-1cm] (p11) {$p_{a_1}$} ;
       %
-      \node[latent, below=of s11,yshift=-0.4cm] (s12) {$s_{a_2}$} ;
+      \node[latent, below=of s11,yshift=0cm] (s12) {$s_{a_2}$} ;
       \node[latent, right=of s12, xshift=-1cm] (p12) {$p_{a_2}$} ;
       
       \node[const, right=of p11,xshift=0.4cm] (r1) {$\bm{>}$} ;
@@ -218,10 +204,10 @@
       \node[const, above=of r2, yshift=0.5cm] (nr2) {\footnotesize \ \ Observed result} ;
       
       \node[latent, left=of s10, xshift=11.4cm] (s20) {$s_{b_0}$} ;
-      \node[latent, below=of s20,yshift=-0.7cm] (s21) {$s_{b_1}$} ;
+      \node[latent, below=of s20,yshift=0cm] (s21) {$s_{b_1}$} ;
       \node[latent, left=of s21, xshift=1cm] (p21) {$p_{b_1}$} ;
       
-      \node[latent, below=of s21, yshift=-0.4cm] (s22) {$s_{b_2}$} ;
+      \node[latent, below=of s21, yshift=0cm] (s22) {$s_{b_2}$} ;
       \node[latent, left=of s22, xshift=1cm] (p22) {$p_{b_2}$} ;
       
       
@@ -259,13 +245,13 @@
       }  
   }
 \end{figure}
-
+\vspace{-0.5cm}
 % \begin{equation*}
 %  P(\text{Model\es{o}}|\text{Dat\en{a}\es{os}}) = \frac{P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}})P(\text{Model\es{o}})}{P(\text{Dat\en{a}\es{os}})}
 % \end{equation*}
-
 \en{To compare models we need to compute, }%
 \es{Para comparar modelos necesitamos computar, }%
+\vspace{0.5cm}
 \begin{equation*}\label{eq:bayes_factor}
 \scalebox{0.9}{
 \begin{split}
@@ -273,10 +259,12 @@
 \end{split}
 }
 \end{equation*}
-%
-\en{Therefor the geometric mean summarize the characteristic long-run growth rate that induces the probability of the alternative models, }%
+
+\vspace{0.5cm}
+
+\en{Therefor the geometric mean summarize the characteristic long-run growth rate that induces the probability of  alternative models, }%
 \es{Entonces, la media geométrica es la tasa de crecimiento de largo plazo característica que induce la probabilidad de los modelos alternativos, }%
-%
+\vspace{-0.7cm}
 \begin{equation*}
 \scalebox{0.9}{
 \begin{split}
@@ -285,6 +273,8 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 \end{split}
 }
 \end{equation*}
+
+\vspace{0.5cm}
 
 \textbf{Conclu\en{tion}\es{ción}}
 \en{The TTT model achieves better results than more complex models such as KickScore, in a more efficient way: }%
@@ -296,7 +286,7 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
   \begin{tabular}{c|cc|cc|cc|cc|c||c} 
  \multirow{2}{*}{$\hfrac{\text{\normalsize Dataset}}{\text{Test size}}$} & \multicolumn{2}{c|}{Constant\es{e}$^\dagger$}& \multicolumn{2}{c|}{Elo$^\dagger$} & \multicolumn{2}{c|}{TrueSkill} & \multicolumn{2}{c|}{KickScore$^\dagger$} &  \multicolumn{2}{c}{TTT} \\
  & GM & $\log_2$BF & GM & $\log_2$BF & GM & $\log_2$BF & GM & $\log_2$BF & GM & LOOCV \\ \hline
-\multirow{2}{*}{$\hfrac{\text{\normalsize ATP}}{\num{186361}}$} & \multirow{2}{*}{$0.5593$} & \multirow{2}{*}{\num{7910}} & \multirow{2}{*}{$0.5695$} & \multirow{2}{*}{\num{3051}} & \multirow{2}{*}{$0.5722$} & \multirow{2}{*}{\num{1780}} & \multirow{2}{*}{$0.5758$} & \multirow{2}{*}{\num{93}} & \multirow{2}{*}{$\bm{0.5760}$} & \multirow{2}{*}{${0.5908}$} \\
+\multirow{2}{*}{$\hfrac{\text{\normalsize ATP}}{ {186361}}$} & \multirow{2}{*}{$0.5593$} & \multirow{2}{*}{ {7910}} & \multirow{2}{*}{$0.5695$} & \multirow{2}{*}{ {3051}} & \multirow{2}{*}{$0.5722$} & \multirow{2}{*}{ {1780}} & \multirow{2}{*}{$0.5758$} & \multirow{2}{*}{ {93}} & \multirow{2}{*}{$\bm{0.5760}$} & \multirow{2}{*}{${0.5908}$} \\
   & & & & & & & & & & \\ \hline
   \end{tabular}
   }
@@ -309,7 +299,7 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 \centering
 \begin{subfigure}[b]{1\linewidth}
     \centering
-    \includegraphics[width=.9\linewidth]{static/atp}
+    \includegraphics[width=.99\linewidth]{static/atp}
 \end{subfigure}
 \end{figure}
 
@@ -361,33 +351,22 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 
 
 \textbf{Introduc\en{tion}\es{ción}}
-\en{The evolutionary growth of a lineage over time, $\omega(t)$, is governed by a sequence of survival and reproduction rates $f(\cdot)$ }%
+\en{The evolutionary growth of a lineage over time, $\omega(t)$, is governed by a sequence of survival and reproductive rates $f(\cdot)$ }%
 \es{El crecimiento evolutivo de un linaje en el tiempo, $\omega(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ }%
 %
-\begin{equation} \label{eq:modelo_exponencial}
+\vspace{-1cm}
+\begin{equation*} \label{eq:modelo_exponencial}
 \omega(T) = \prod_t^T f(\Aa_t) \approx g^T \ \ \text{ with } \ \ f(\Aa) =
 \begin{cases}
  1.5 & \Aa = \text{ \en{Head}\es{Cara} } \\
  0.6 & \Aa = \text{ \en{Tail}\es{Sello} }
 \end{cases}
-\end{equation}
-%
-\en{According to the \emph{replicator dynamic} equation \cite{taylor1978-replicatorDynamic}, the proportion of a strategy $\Ee$ in the population given the environment $\vec{\Aa}$ is }%
-\es{Según el modelo estándar de evolución, conocido como \emph{replicator dynamic} \cite{taylor1978-replicatorDynamic}, la proporción de una estrategia en la población es }%
-% schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
-%
-\begin{equation} \label{eq:replicator_dynamic}  \tag{Isomorphism}
-\scalebox{0.95}{
-\begin{split}
-P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\sum_s P(\Ee|\Aa_1 \dots \Aa_{T-1}) f(\Ee,\Aa_T)}
-\end{split}
-}
-\end{equation}
+\end{equation*}\\[-1.5cm]
 %
 \en{Which is the characteristic growth rate $g$? }%
 \es{¿Cuál es la tasa de crecimiento característica $g$? }%
 
-\vspace{0.3cm}
+\vspace{0.5cm}
 
 \begin{figure}[H]
     \centering
@@ -401,13 +380,22 @@ P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\su
     \end{subfigure}
 \end{figure}
 
-\textbf{Result\en{s}\es{ados}}
 
-\en{Cooperation reduces fluctuations, which increases the growth rate. }%
-\es{La cooperación reduce las fluctuaciones, lo que aumenta la tasa de crecimiento. }%
+\en{Generalizing $f(\Ee,\Aa) = \Ee^\Aa(1-\Ee)^\Aa$ with $\Ee \in [0,1]$, the \emph{replicator dynamic} equation states that the proportion of a strategy $\Ee$ is }%
+\es{Generalizando $f(\Ee,\Aa) = \Ee^\Aa(1-\Ee)^\Aa$ con $\Ee \in [0,1]$, la ecuación \emph{replicator dynamic} afirma que la proporción de una estrategia en la población es }%
+% schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
 %
-\en{Defection increases fluctuations, which reduces the growth rate. }%
-\es{La desercion aumenta las fluctuaciones, lo que reduce la tasa de crecimiento. }%
+\begin{equation} \label{eq:replicator_dynamic}  \tag{Isomorphism}
+\scalebox{0.95}{
+\begin{split}
+P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\sum_s P(\Ee|\Aa_1 \dots \Aa_{T-1}) f(\Ee,\Aa_T)}
+\end{split}
+}
+\end{equation}
+%
+\textbf{Result\en{s}\es{ados}.}
+\en{Cooperation reduces fluctuations, increasing the growth rate and defection increases fluctuations, reducing the growth rate. }%
+\es{La cooperación reduce las fluctuaciones, aumentando la tasa de crecimiento y la desercion aumenta las fluctuaciones, reduciendo la tasa de crecimiento. }%
 %
 \begin{figure}[H]
     \centering
@@ -415,17 +403,30 @@ P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\su
     \includegraphics[width=\linewidth]{figures/pdf/ergodicity_desertion.pdf}
     \end{subfigure}
 \end{figure}
+\vspace{-0.5cm}
+%
+\en{This is why multilevel selection favors cooperation. }
+\es{Por eso la selección multivinivel favorece la cooperación. }
+%
+\vspace{-0.5cm}
+\begin{equation*}\label{eq:posterior_multinivel}
+\scalebox{0.9}{
+\begin{split}
+\underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g} \underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T}, g)}_{\text{\Large \en{Level 1 selection}\es{Selección de nivel 1}}}  \underbrace{P(g|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Level 2 selection}\es{Selección de nivel 2}}}
+\end{split}
+}
+\end{equation*}
 
-\en{As soon as cooperation emerges, an advantage in favor of specialist strategies appears. }%
+\en{With cooperation, an advantage for specialist strategies appears}%
 \es{Apenas surge la cooperación, aparece una ventaja a favor de las estrategias especialistas. }%
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\linewidth}
-    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-0.pdf}
+    \includegraphics[width=1\linewidth]{figures/pdf/tasa-temporal-0.pdf}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\linewidth}
-    \includegraphics[width=\linewidth]{figures/pdf/tasa-temporal-2.pdf}
+    \includegraphics[width=1\linewidth]{figures/pdf/tasa-temporal-2.pdf}
     \end{subfigure}
     \label{fig:tasa-temporal-2}
 \end{figure}
@@ -438,11 +439,15 @@ P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\su
 \textbf{Conclution.} The advantage in favor of cooperation and specialization is due to the multiplicative nature of evolutionary and probabilistic selection processes.
 
 
-
 \end{multicols}
-{ \footnotesize
-%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
-\bibliographystyle{auxiliar/biblio/plos2015} % Plain referencing style
-\bibliography{auxiliar/biblio/biblio.bib} % Use the example bibliography file sample.bib
-}
+
+ \vspace{1.2cm}
+\huge \en{Did you find the commonalities between the two papers?}\es{¿Encontraste el punto en común entre los dos trabajos?}
+
+ 
+% { \footnotesize
+% %\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+% \bibliographystyle{auxiliar/biblio/plos2015} % Plain referencing style
+% \bibliography{auxiliar/biblio/biblio.bib} % Use the example bibliography file sample.bib
+% }
 \end{document}

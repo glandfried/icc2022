@@ -26,24 +26,25 @@ function coop_temporal_average(n, e, ambiente, N)
     return res
 end
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Environment", ylab="Proportional growth rate", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing)
-plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label="0.71")
-plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label="0.99")
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Environment", ylab="Growth rate", legend=(0.15,0.99), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, linewidth=3, legendtitle = "Strategy", legendtitlefontsize = 10,background_color_legend = nothing)
+plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label="0.71", linewidth=3)
+plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label="0.99", linewidth=3)
  # <\Delta x>
-plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color=2) 
-plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color=3)
+plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color=2, linewidth=3) 
+plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color=3, linewidth=3)
 # Analisis
-plot!([0.5,0.5], [(0.71^0.5)*(0.29^0.5),0.71*0.5+0.29*0.5], color="black", line=:arrow, label=false)
-scatter!([0.71],[0.71^0.71*0.29^0.29], color=2,label=false)
+#plot!([0.5,0.5], [(0.71^0.5)*(0.29^0.5),0.71*0.5+0.29*0.5], color="black", line=:arrow, label=false, linewidth=3)
+scatter!([0.71],[0.71^0.71*0.29^0.29], color=2,label=false, markersize=5)
 savefig(fig, "pdf/tasa-temporal-0.pdf")
 savefig(fig, "png/tasa-temporal-0.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/tasa-temporal-0.pdf pdf/tasa-temporal-0.pdf`) 
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Environment", ylab="Proportional growth rate", legend=(0.15,0.9), thickness_scaling = 1.5, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5)
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Environment", ylab="Frowth rate", legend=(0.15,0.9), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5, linewidth=3 )
 plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label=false, color="gray", alpha=0.5)
-scatter!([0.71],[0.71^0.71*0.29^0.29], color="gray",label=false)
-plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5)
+scatter!([0.71],[0.71^0.71*0.29^0.29], color="gray",label=false , markersize=5)
+plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5, linewidth=3)
  # <\Delta x>
-plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color="gray", alpha=0.5)
+plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color="gray", alpha=0.5, linewidth=3)
 
 aN = zeros(Float64,(N,length(e)))
 for i in 1:N
@@ -61,24 +62,25 @@ plot!(e,aN[5,:], label="5", color=5)
 plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color="black")
 savefig(fig, "pdf/tasa-temporal-1.pdf")
 savefig(fig, "png/tasa-temporal-1.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/tasa-temporal-1.pdf pdf/tasa-temporal-1.pdf`) 
+
 
 eN = zeros(Float64,(N,length(e)))
 for i in 1:N
     eN[i,:] .= coop_temporal_average.(i,e,0.71,i)
 end
-fig= plot(e,eN[1,:], xlab="Estrategy", ylab="Proportional growth rate", legend=(0.15,1.0), thickness_scaling = 1.5, label="1", grid=false, foreground_color_legend = nothing)
-plot!([0.71,0.71],[0.0,maximum(eN)], color="black", line=:dash, label=false)
-plot!(e,eN[2,:], color=2, label="2")
-plot!(e,eN[3,:], color=3, label="3")
-plot!(e,eN[4,:], color=4, label="4")
-plot!(e,eN[5,:], color=5, label="5")
-scatter!([e[argmax(eN[1,:])]],[eN[1,argmax(eN[1,:])]], color=1, label=false)
-scatter!([e[argmax(eN[2,:])]],[eN[2,argmax(eN[2,:])]], color=2, label=false)
-scatter!([e[argmax(eN[3,:])]],[eN[3,argmax(eN[3,:])]], color=3, label=false)
-scatter!([e[argmax(eN[4,:])]],[eN[4,argmax(eN[4,:])]], color=4, label=false)
-scatter!([e[argmax(eN[5,:])]],[eN[5,argmax(eN[5,:])]], color=5, label=false)
+fig= plot(e,eN[1,:], xlab="Strategy", legend=(0.15,1.0), thickness_scaling = 2.0, label="1", grid=false, foreground_color_legend = nothing, linewidth=2.0)
+plot!([0.71,0.71],[0.0,maximum(eN)], color="black", line=:dash, label=false, linewidth=2, legendtitle =  "Group size", legendtitlefontsize =10,background_color_legend = nothing)
+plot!(e,eN[2,:], color=2, label="2", linewidth=2)
+plot!(e,eN[3,:], color=3, label="3", linewidth=2)
+#plot!(e,eN[4,:], color=4, label="4", linewidth=2)
+scatter!([e[argmax(eN[1,:])]],[eN[1,argmax(eN[1,:])]], color=1, label=false, markersize=5)
+scatter!([e[argmax(eN[2,:])]],[eN[2,argmax(eN[2,:])]], color=2, label=false, markersize=5)
+scatter!([e[argmax(eN[3,:])]],[eN[3,argmax(eN[3,:])]], color=3, label=false, markersize=5)
+#scatter!([e[argmax(eN[4,:])]],[eN[4,argmax(eN[4,:])]], color=4, label=false, markersize=5)
 savefig(fig, "pdf/tasa-temporal-2.pdf")
 savefig(fig, "png/tasa-temporal-2.png")
+run(`pdfcrop --margins '0 0 0 0' pdf/tasa-temporal-2.pdf pdf/tasa-temporal-2.pdf`) 
 
 
 

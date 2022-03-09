@@ -42,8 +42,8 @@ for i in 1:N
     e[:,i] .= cumsum(log.([ f(r()) for i in 1:T]))
 end
 
-fig = plot(e, label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
-plot!([1,2000],[0,T*log(ensamble_average )], color="black", label=false)
+fig = plot(e, label=false, thickness_scaling = 2.0, grid=false, xlab="Time")
+plot!([1,2000],[0,T*log(ensamble_average )], color="black", label=false, linewidth=3)
 #plot!([1,2000],[0,T*log(time_average )], color="black", label=false)
 savefig(fig, "pdf/ergodicity_individual_trayectories.pdf")
 run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_individual_trayectories.pdf pdf/ergodicity_individual_trayectories.pdf`) 
@@ -57,7 +57,7 @@ for i in 1:N
     e[:,i] .= cumsum(log.([ f(r()) for i in 1:T]))
 end
 
-fig = plot([1,T],[0,T*log(ensamble_average )], color="black", label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
+fig = plot([1,T],[0,T*log(ensamble_average )], color="black", label=false, thickness_scaling = 2.0, grid=false, xlab="Time", ylab="log(Resources) ")
 plot!([1,T],[0,T*log(time_average )], color=1, label=false)
 #plot!(e, label=false, color=1)
 savefig(fig, "pdf/ergodicity_individual_trayectories_longrun.pdf")
@@ -72,17 +72,17 @@ for i in 1:N
     e[:,i] .= [[1]; cumprod([ f(r()) for i in 1:T])]
 end
 
-fig = plot(log.(e[:,1]), thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ", label="10^0", legend=(0.15,0.9), foreground_color_legend = nothing)
-plot!(1:T+1,log.([mean(e[t,1:(10^1)]) for t in 1:T+1]), linewidth=1.2, label="10^1")
-plot!(1:T+1,log.([mean(e[t,1:(10^2)]) for t in 1:T+1]),linewidth=1.4, label="10^2")
-plot!(1:T+1,log.([mean(e[t,1:(10^3)]) for t in 1:T+1]), linewidth=1.6, label="10^3")
-plot!(1:T+1,log.([mean(e[t,1:(10^4)]) for t in 1:T+1]), label="10^4",linewidth=1.8, color="black")
+fig = plot(log.(e[:,1]), thickness_scaling = 2.0, grid=false, xlab="Time", ylab="log(Resources) ", label="10^0", legend=(0.15,0.9), foreground_color_legend = nothing, linewidth=3, background_color_legend = nothing )
+plot!(1:T+1,log.([mean(e[t,1:(10^1)]) for t in 1:T+1]), linewidth=3, label="10^1")
+plot!(1:T+1,log.([mean(e[t,1:(10^2)]) for t in 1:T+1]), linewidth=3, label="10^2")
+#plot!(1:T+1,log.([mean(e[t,1:(10^3)]) for t in 1:T+1]), linewidth=3, label="10^3")
+plot!(1:T+1,log.([mean(e[t,1:(10^4)]) for t in 1:T+1]), label="10^4", color="black", linewidth=3)
 savefig(fig, "pdf/ergodicity_expectedValue.pdf")
 run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_expectedValue.pdf pdf/ergodicity_expectedValue.pdf`) 
 
 
 coop = game(100,0)[1,:]
-fig=plot([1,1001], [0, 1001*log(time_average)], label=false, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ")
+fig=plot([1,1001], [0, 1001*log(time_average)], label=false, thickness_scaling = 2.0, grid=false, xlab="Time", ylab="log(Resources) ")
 plot!([1,1001], [0, 1001*log(ensamble_average)], label=false, color="black")
 plot!(log.(coop), label=false, color=3)
 savefig(fig, "pdf/ergodicity_cooperation.pdf")
@@ -92,11 +92,11 @@ run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_cooperation.pdf pdf/ergodicity_c
 coop0 = game(100,0)
 coop1 = game(100,1)
 coop2 = game(100,2)
-fig = plot(log.(transpose(coop0[end:end,:])), color=3, thickness_scaling = 1.5, grid=false, xlab="Time", ylab="log(Resources) ", label="0 Defectors", legend=(0.15,0.9), foreground_color_legend = nothing)
+fig = plot(log.(transpose(coop0[end:end,:])), color=3, thickness_scaling = 2.0, grid=false, xlab="Time", ylab="log(Resources) ", label="0 Defectors", legend=(0.15,0.9), foreground_color_legend = nothing, linewidth=3)
 plot!(log.(transpose(coop1[end:end,:])), color=1, label=false)
-plot!(log.(transpose(coop1[1:1,:])), color=1, label="1 Defectors")
+plot!(log.(transpose(coop1[1:1,:])), color=1, label="1 Defectors", linewidth=3)
 plot!(log.(transpose(coop2[end-1:end,:])), color=2, label=false)
-plot!(log.(transpose(coop2[1:1,:])), color=2, label="2 Defectors")
+plot!(log.(transpose(coop2[1:1,:])), color=2, label="2 Defectors", linewidth=3)
 savefig(fig, "pdf/ergodicity_desertion.pdf")
 run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_desertion.pdf pdf/ergodicity_desertion.pdf`) 
 
