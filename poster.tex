@@ -249,29 +249,22 @@
 % \begin{equation*}
 %  P(\text{Model\es{o}}|\text{Dat\en{a}\es{os}}) = \frac{P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}})P(\text{Model\es{o}})}{P(\text{Dat\en{a}\es{os}})}
 % \end{equation*}
-\en{To compare models we need to compute, }%
-\es{Para comparar modelos necesitamos computar, }%
+\en{To compare models we need to compute the bayes factor (BF), }%
+\es{Para comparar modelos necesitamos computar el bayes factor (BF), }%
 \vspace{0.5cm}
 \begin{equation*}\label{eq:bayes_factor}
-\scalebox{0.9}{
 \begin{split}
 \frac{P(\text{Model\es{o}}_i|\text{Dat\en{a}\es{os}})}{P(\text{Model\es{o}}_j|\text{Dat\en{a}\es{os}})} = \frac{P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}_i)\cancel{P(\text{Model\es{o}}_i)}}{P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}_j)\cancel{P(\text{Model\es{o}}_j)}}
 \end{split}
-}
-\end{equation*}
-
-\vspace{0.5cm}
-
-\en{Therefor the geometric mean summarize the characteristic long-run growth rate that induces the probability of  alternative models, }%
-\es{Entonces, la media geométrica es la tasa de crecimiento de largo plazo característica que induce la probabilidad de los modelos alternativos, }%
-\vspace{-0.7cm}
+\end{equation*}\\[-0.7cm]
+\en{Therefor the geometric mean (GM) summarize the long-run growth rate that induces the probability of  alternative models, }%
+\es{Entonces, la media geométrica (GM) es la tasa de crecimiento de largo plazo que induce la probabilidad de los modelos alternativos, }%
+\vspace{0.4cm}
 \begin{equation*}
-\scalebox{0.9}{
 \begin{split}
 P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2|d_1,\text{Model\es{o}}) \dots \\
 & = \text{geometric mean}(P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}))^{|\text{Dat\en{a}\es{os}}|}
 \end{split}
-}
 \end{equation*}
 
 \vspace{0.5cm}
@@ -284,7 +277,7 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 \normalsize
 \scalebox{1.15}{
   \begin{tabular}{c|cc|cc|cc|cc|c||c} 
- \multirow{2}{*}{$\hfrac{\text{\normalsize Dataset}}{\text{Test size}}$} & \multicolumn{2}{c|}{Constant\es{e}$^\dagger$}& \multicolumn{2}{c|}{Elo$^\dagger$} & \multicolumn{2}{c|}{TrueSkill} & \multicolumn{2}{c|}{KickScore$^\dagger$} &  \multicolumn{2}{c}{TTT} \\
+ \multirow{2}{*}{$\hfrac{\text{\normalsize Dataset}}{\text{Test size}}$} & \multicolumn{2}{c|}{Constant\es{e}}& \multicolumn{2}{c|}{Elo} & \multicolumn{2}{c|}{TrueSkill} & \multicolumn{2}{c|}{KickScore} &  \multicolumn{2}{c}{TTT} \\
  & GM & $\log_2$BF & GM & $\log_2$BF & GM & $\log_2$BF & GM & $\log_2$BF & GM & LOOCV \\ \hline
 \multirow{2}{*}{$\hfrac{\text{\normalsize ATP}}{ {186361}}$} & \multirow{2}{*}{$0.5593$} & \multirow{2}{*}{ {7910}} & \multirow{2}{*}{$0.5695$} & \multirow{2}{*}{ {3051}} & \multirow{2}{*}{$0.5722$} & \multirow{2}{*}{ {1780}} & \multirow{2}{*}{$0.5758$} & \multirow{2}{*}{ {93}} & \multirow{2}{*}{$\bm{0.5760}$} & \multirow{2}{*}{${0.5908}$} \\
   & & & & & & & & & & \\ \hline
@@ -386,11 +379,9 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 % schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
 %
 \begin{equation} \label{eq:replicator_dynamic}  \tag{Isomorphism}
-\scalebox{0.95}{
 \begin{split}
-P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\sum_s P(\Ee|\Aa_1 \dots \Aa_{T-1}) f(\Ee,\Aa_T)}
+P(\Ee|\vec{\Aa}^{1:T}) = \frac{P(\Ee|\vec{\Aa}^{\,1:T-1}) f(\Ee,\Aa^T)}{\sum_s P(\Ee|\vec{\Aa}^{\,1:T-1}) f(\Ee,\Aa^T)}
 \end{split}
-}
 \end{equation}
 %
 \textbf{Result\en{s}\es{ados}.}
@@ -410,11 +401,9 @@ P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\su
 %
 \vspace{-0.5cm}
 \begin{equation*}\label{eq:posterior_multinivel}
-\scalebox{0.9}{
 \begin{split}
 \underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g} \underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T}, g)}_{\text{\Large \en{Level 1 selection}\es{Selección de nivel 1}}}  \underbrace{P(g|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Level 2 selection}\es{Selección de nivel 2}}}
 \end{split}
-}
 \end{equation*}
 
 \en{With cooperation, an advantage for specialist strategies appears}%
@@ -441,7 +430,7 @@ P(\Ee|\Aa_1 \dots \Aa_T) = \frac{P(\Ee|\Aa_1 \dots \Aa _{T-1}) f(\Ee,\Aa_T)}{\su
 
 \end{multicols}
 
- \vspace{1.2cm}
+ \vspace{0.4cm}
 \huge \en{Did you find the commonalities between the two papers?}\es{¿Encontraste el punto en común entre los dos trabajos?}
 
  

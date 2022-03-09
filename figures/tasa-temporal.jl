@@ -26,25 +26,25 @@ function coop_temporal_average(n, e, ambiente, N)
     return res
 end
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Environment", ylab="Growth rate", legend=(0.15,0.99), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, linewidth=3, legendtitle = "Strategy", legendtitlefontsize = 10,background_color_legend = nothing)
-plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label="0.71", linewidth=3)
-plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label="0.99", linewidth=3)
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label="0.50", xlab="Environment", ylab="Growth rate", legend=(0.15,0.99), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, linewidth=2, legendtitle = "Strategy", legendtitlefontsize = 10,background_color_legend = nothing)
+plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label="0.71", linewidth=2)
+plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label="0.99", linewidth=2)
  # <\Delta x>
-plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color=2, linewidth=3) 
-plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color=3, linewidth=3)
+plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color=2, linewidth=2) 
+plot!(e, 0.99.*e.+0.01*(1.0.-e), label=false, line=:dot, color=3, linewidth=2)
 # Analisis
-#plot!([0.5,0.5], [(0.71^0.5)*(0.29^0.5),0.71*0.5+0.29*0.5], color="black", line=:arrow, label=false, linewidth=3)
+#plot!([0.5,0.5], [(0.71^0.5)*(0.29^0.5),0.71*0.5+0.29*0.5], color="black", line=:arrow, label=false, linewidth=2)
 scatter!([0.71],[0.71^0.71*0.29^0.29], color=2,label=false, markersize=5)
 savefig(fig, "pdf/tasa-temporal-0.pdf")
 savefig(fig, "png/tasa-temporal-0.png")
 run(`pdfcrop --margins '0 0 0 0' pdf/tasa-temporal-0.pdf pdf/tasa-temporal-0.pdf`) 
 
-fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Environment", ylab="Frowth rate", legend=(0.15,0.9), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5, linewidth=3 )
+fig = plot(e, (0.5.^e).*(0.5.^(1.0.-e)),label=false, xlab="Environment", ylab="Frowth rate", legend=(0.15,0.9), thickness_scaling = 2.0, grid=false, foreground_color_legend = nothing, color="gray", alpha=0.5, linewidth=2 )
 plot!(e, (0.71.^e).*(0.29.^(1.0.-e)),label=false, color="gray", alpha=0.5)
 scatter!([0.71],[0.71^0.71*0.29^0.29], color="gray",label=false , markersize=5)
-plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5, linewidth=3)
+plot!(e, (0.99.^e).*(0.01.^(1.0.-e)),label=false, color="gray", alpha=0.5, linewidth=2)
  # <\Delta x>
-plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color="gray", alpha=0.5, linewidth=3)
+plot!(e, 0.71.*e.+0.29*(1.0.-e), label=false, line=:dot, color="gray", alpha=0.5, linewidth=2)
 
 aN = zeros(Float64,(N,length(e)))
 for i in 1:N
