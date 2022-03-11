@@ -7,3 +7,6 @@
 [submodule "auxiliar/biblio"]
 	path = auxiliar/biblio
 	url = git@github.com:glandfried/biblio.git
+[submodule "charla/tex"]
+	path = charla/tex
+	url = git@github.com:glandfried/tex.git

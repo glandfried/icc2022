@@ -1,0 +1,276 @@
+\documentclass[aspectratio=169,10pt,xcolor=svgnames,compress]{beamer} 
+% Explicación de las opciones:
+% aspectratio es para que tenga formato 16:9
+% 10pt es el tamaño de la fuente por defecto
+% xcolor=svgnames selecciona el esquema de colores a utilizar
+% compress trata de achicar todas las barras de navegación
+% Agregar handout a las opciones, para tener una versión imprimible.
+
+\input{tex/diapo_encabezado.tex}
+\input{tex/tikzlibrarybayesnet.code.tex}
+
+% Las siguientes líneas definen el footline.
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.26\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \hspace*{2em}\usebeamerfont{author in head/foot}\insertauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.48\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\inserttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.26\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2em} 
+    \end{beamercolorbox}
+  }%
+  \vskip0pt%
+}
+\makeatother
+
+% La siguiente línea elimina la barra de navegación
+\setbeamertemplate{navigation symbols}{}
+
+% La siguiente define que los bloques tengan bordes redondeados
+\setbeamertemplate{blocks}[rounded]
+
+% Las siguientes líneas definen el formato de los bloques por default y los de
+% ejemplos
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!25!black}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block title example}{fg=white,bg=green!25!black}
+\setbeamercolor{block body example}{parent=normal text,bg=green!50!white}
+
+% La siguiente línea hace que el texto del PDF resultante sea copiable
+\usepackage[T1]{fontenc}
+
+% La siguiente línea hace que sea posible escribir acentos y demás símbolos en UTF-8
+\usepackage[utf8]{inputenc}
+
+% La siguiente línea define la fuente
+\usepackage{lmodern} \normalfont
+\usepackage{tikz}
+\usetikzlibrary{cd,positioning,decorations.text}
+
+% La siguiente línea es para formatear el texto en columnas
+\usepackage{multicol}
+
+% Descomentar el siguiente comando para tener una carátula antes del inicio de cada sección.
+%\AtBeginSection[]{
+%  \begin{frame}[plain,noframenumbering]
+%    \vfill \centering
+%    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%      \usebeamerfont{title}\insertsectionhead\par
+%    \end{beamercolorbox} 
+%    \vfill
+%  \end{frame}
+%}
+
+% % % % % Título y autor (para la metadata del PDF)
+\title{} 	% Si querés poner símbolos matemáticos, acá usá
+			 	% algo así \texorpdfstring{$\alpha$}{alpha}
+\author{}
+% % % % % %
+
+\begin{document}
+
+% Las siguientes opciones al frame son para que no salga la barra de abajo ni
+% la cuente en la numeración (es para la portada)
+\frame[plain,noframenumbering]
+{
+  \centering
+  \vfill
+
+  {\LARGE\bf
+    Inferencia bayesiana: las verdades empíricas
+  }
+
+  \line(1,0){250}
+  \vfill
+  \vfill
+  {\footnotesize
+    \structure{\Large\bf\rmfamily Gustavo Landfried}\\[.5ex]
+    {Becario doctoral}
+  }
+  \vfill
+
+  \vfill
+  % Para quienes tienen un director
+%   {\footnotesize
+%     \structure{\normalsize\bf\rmfamily Esteban Mocskos}\\[.5ex]
+%     {Director}
+%   }
+  % Para quienes tienen dos directores (descomentar todo el bloque multicols)
+  \begin{multicols*}{2}
+    {\footnotesize
+    \structure{\normalsize\bf\rmfamily Esteban Mocskos}\\[.5ex]
+    {Director}
+    }
+    \\
+    {\footnotesize
+    \structure{\normalsize\bf\rmfamily Diego Slezak}\\[.5ex]
+    {Codirector}
+    }
+  \end{multicols*}
+  \vfill
+  \vfill
+
+
+  {\Large
+    4to Día de la Investigación en Ciencias de la Computación\\
+  }
+  {\scriptsize
+    18 de marzo de 2022
+  }
+  \vfill
+  \vfill
+
+  \includegraphics[scale=0.05, bb= 23in -3in 25in 0in]{img/exactas_uba.png}
+  \includegraphics[scale=0.14]{img/icc-horizontal.jpg}
+  \includegraphics[scale=0.32, bb= -0.7in -0.15in 0in 0in]{img/logo-dc.pdf}
+}
+
+% La siguiente es una tabla de contenidos (opcional)
+\begin{frame}[plain,noframenumbering]
+ 
+ \begin{textblock}{80}(4,04)
+ \LARGE \textcolor{black!55}{Ciencias empíricas \\[-0.2cm] \Large creencias, datos y sorpresa }
+\end{textblock}
+
+ \begin{textblock}{47}(113,74)
+\centering \Large  \textcolor{black!5}{Supervivencia}
+\end{textblock}
+
+ %\vspace{2cm}brown
+%\maketitle
+\Wider[2cm]{
+\includegraphics[width=1\textwidth]{../auxiliar/images/peligro_predador}
+}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}[plain]
+ \begin{textblock}{160}(4,4)
+ \centering
+  \Large Acuerdos intersubjetivos: fuente de las verdades empíricas
+ \end{textblock}
+ \vspace{1cm}
+ 
+ \begin{textblock}{90}(10,20)
+
+ \hspace{0.75cm} Monty Hall \\[0.2cm]
+
+ 
+ \scalebox{0.8}{
+\tikz{ %
+         \node[factor, minimum size=1cm] (p1) {\includegraphics[width=0.05\textwidth]{../auxiliar/images/cerradura.png}} ;
+         \only<1-4>{\node[factor, minimum size=1cm, xshift=1.5cm] (p2) {} ;}
+         \only<5-> {\node[det, minimum size=1cm, xshift=1.5cm] (p2) {\includegraphics[width=0.06\textwidth]{../auxiliar/images/dedo.png}} ;}
+         \node[factor, minimum size=1cm, xshift=3cm] (p3) {} ;
+         } 
+}
+
+\vspace{0.8cm}
+
+\onslide<2->{
+\hspace{0.5cm} Modelo causal \\[0.3cm]
+\scalebox{0.6}{
+\tikz{        
+    
+    \node[latent] (d) {\includegraphics[width=0.10\textwidth]{../auxiliar/images/dedo.png}} ;
+    \node[const,left=of d] (nd) {\Large $s$} ;
+    
+    \node[latent, above=of d, xshift=-1.5cm] (r) {\includegraphics[width=0.12\textwidth]{../auxiliar/images/regalo.png}} ;
+    \node[const,left=of r] (nr) {\Large $r$} ;
+    
+    
+    \node[latent, fill=black!30, above=of d, xshift=1.5cm] (c) {\includegraphics[width=0.12\textwidth]{../auxiliar/images/cerradura.png}} ;
+    \node[const,left=of c] (nc) {\Large $c$} ;
+         
+    \edge {r,c} {d};
+}
+}
+}
+\end{textblock}
+
+
+\begin{textblock}{90}(60,18)
+Principios interculturales de acuerdos intersubjetivos: \\[0.15cm]
+\ \ \  $\bullet$ Principio de indiferencia\onslide<3->{:  regla del producto a priori} \\[0.05cm]
+\ \ \  $\bullet$ Principio de reciprocidad\onslide<4->{: regla de la suma} \\[0.05cm]
+\ \ \  $\bullet$ Principio de coherencia\onslide<5->{: regla del producto a posteriori}
+\end{textblock}
+
+\begin{textblock}{90}(60,48)
+
+\centering
+\onslide<3->{
+\hspace{-0.8cm} Creencia conjunta \\[0.1cm]
+  \begin{tabular}{|c|c|c|c|} \hline  \setlength\tabcolsep{0.4cm} 
+ & \, $r_1$ \, &  \, $r_2$ \, & \, $r_3$ \,  \\ \hline 
+  $s_1$ & $0$ & $0$ & $0$ \\ \hline
+  $s_2$ & $1/6$ & $0$ & $1/3$ \\ \hline
+  $s_3$ & \only<3-4>{$1/6$}\only<5>{$0$} & \only<3-4>{$1/3$}\only<5>{$0$} & $0$  \\ \hline  
+  \end{tabular}}\onslide<4->{
+  \begin{tabular}{c} \setlength\tabcolsep{0.4cm} 
+   \\
+   $0$\\
+   $1/2$\\
+   \only<4>{$1/2$}\only<5>{$0$}\\
+  \end{tabular}} 
+%  
+%  \begin{tabular}{ccccc} \setlength\tabcolsep{0.4cm} 
+%  \,   \phantom{$s_3$} & \only<4>{$1/3$}\only<5>{$1/6$\ }\,   & \only<4>{$1/3$ \ }\only<5>{$0$\ }  \,    &   $1/3$ \ &  \hspace{0.8cm}
+%   \end{tabular}}
+%   
+\end{textblock}
+
+\only<4>{
+\begin{textblock}{90}(60,71) 
+\hspace{2.85cm} $1/3$ \hspace{0.35cm} $1/3$ \hspace{0.35cm} $1/3$
+\end{textblock}
+}
+\only<5>{
+\begin{textblock}{90}(60,71) 
+\hspace{2.85cm} $1/6$ \hspace{0.525cm} $0$ \hspace{0.525cm} $1/3$
+\end{textblock}
+}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Final remarks}
+\frame{
+  {\bf Resumen de la presentación}
+
+  \begin{itemize}\itemsep1em
+    \item El
+    \item resumen
+  \end{itemize}
+}
+\end{document}
