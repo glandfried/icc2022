@@ -49,6 +49,12 @@ savefig(fig, "pdf/ergodicity_individual_trayectories.pdf")
 run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_individual_trayectories.pdf pdf/ergodicity_individual_trayectories.pdf`) 
 
 
+fig = plot(e, label=false, thickness_scaling = 2.0, grid=false, xlab="Time", ylab="log(Resources)")
+plot!([1,2000],[0,T*log(ensamble_average )], color="black", label=false, linewidth=2)
+#plot!([1,2000],[0,T*log(time_average )], color="black", label=false)
+savefig(fig, "pdf/ergodicity_individual_trayectories_y.pdf")
+run(`pdfcrop --margins '0 0 0 0' pdf/ergodicity_individual_trayectories_y.pdf pdf/ergodicity_individual_trayectories_y.pdf`) 
+
 N = 1
 T = 1000000
 

@@ -207,8 +207,8 @@
 \begin{textblock}{90}(60,18)
 Principios interculturales de acuerdos intersubjetivos: \\[0.15cm]
 \ \ \  $\bullet$ Principio de indiferencia\onslide<3->{:  regla del producto a priori} \\[0.05cm]
-\ \ \  $\bullet$ Principio de reciprocidad\onslide<4->{: regla de la suma} \\[0.05cm]
-\ \ \  $\bullet$ Principio de coherencia\onslide<5->{: regla del producto a posteriori}
+\ \ \  $\bullet$ \only<2-3>{\textcolor{black!25}}{Principio de reciprocidad\onslide<4->{: regla de la suma} } \\[0.05cm]
+\ \ \  $\bullet$ \only<2-4>{\textcolor{black!25}}{Principio de coherencia\onslide<5->{: regla del producto a posteriori} }
 \end{textblock}
 
 \begin{textblock}{90}(60,48)
@@ -246,31 +246,112 @@ Principios interculturales de acuerdos intersubjetivos: \\[0.15cm]
 \end{textblock}
 }
 
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+\centering \Large Modelos causales alternativos
+\end{textblock}
+
+\only<1->{
+\begin{textblock}{160}(16,12) 
+\begin{equation*}
+ P(\text{Modelo}|\text{Datos}) = \frac{\only<1->{\overbrace{P(\text{Data}|\text{Modelo})}^{\text{Predicción a priori}}} \only<1->{P(\text{Modelo})} }{ P(\text{Data})} \phantom{\frac{\overbrace{P(\text{Datos}|\text{Modelo})}^{\text{Evidencia}}}{ P(\text{Datos})}}
+\end{equation*}
+\end{textblock}
+}
+% 
+% \only<2>{
+% \begin{textblock}{160}(0,47) 
+% \begin{align*}
+% P(\text{Data}|\text{Modelo}) & = \sum_{i} P(\text{Data}|\text{Hypothesis}_i,\text{Model}) P(\text{Hypothesis}_i|\text{Model}) 
+% \end{align*}
+% \end{textblock}
+% }
+
+
+
+\only<2>{
+
+\begin{textblock}{140}(10,30) 
+\centering
+\includegraphics[width=0.66\textwidth]{figures/monty_hall_selection.pdf} \hspace{2cm}
+\end{textblock}
+
+\begin{textblock}{80}(86,30)
+\centering
+\scalebox{0.5}{
+\tikz{        
+    
+    \node[latent] (d) {\includegraphics[width=0.10\textwidth]{../auxiliar/images/dedo.png}} ;
+    \node[const,left=of d] (nd) {\Large $s$} ;
+    
+    \node[latent, above=of d, xshift=-1.5cm] (r) {\includegraphics[width=0.12\textwidth]{../auxiliar/images/regalo.png}} ;
+    \node[const,left=of r] (nr) {\Large $r$} ;
+    
+    
+    \node[latent, fill=black!30, above=of d, xshift=1.5cm] (c) {\includegraphics[width=0.12\textwidth]{../auxiliar/images/cerradura.png}} ;
+    \node[const,left=of c] (nc) {\Large $c$} ;
+         
+    \edge {r,c} {d};
+}
+}
+\end{textblock}
+
+
+\begin{textblock}{80}(86,64)
+\centering
+\scalebox{0.5}{
+ \tikz{            
+    \node[latent,] (r) {\includegraphics[width=0.12\textwidth]{../auxiliar/images/regalo.png}} ;
+    \node[const,left=of r] (nr) {\Large $r$} ;    
+    
+    
+    \node[latent, below=of r] (d) {\includegraphics[width=0.10\textwidth]{../auxiliar/images/dedo.png}} ;
+    \node[const, left=of d] (nd) {\Large $s$} ;
+
+    \edge {r} {d};
+    
+}
+}
+\end{textblock}
+
+}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+\centering \Large Poster 1 \\  
+\large 
+Estimador de habilidad estado-del-arte
+\end{textblock}
+
+\begin{textblock}{140}(10,18) \centering
+\includegraphics[width=\linewidth]{../static/atp.pdf}
+\end{textblock}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\begin{textblock}{160}(0,4)
+\centering \Large Poster 2 \\  
+\large 
+Ventaja evolutva de la cooperación y la especialización.
+\end{textblock}
+
+
+\begin{textblock}{80}(0,18) \centering
+\includegraphics[width=\linewidth]{../figures/pdf/ergodicity_individual_trayectories_y.pdf}
+\end{textblock}
+
+\begin{textblock}{80}(80,18) \centering
+\includegraphics[width=\linewidth]{../figures/pdf/ergodicity_desertion.pdf}
+\end{textblock}
 
 \end{frame}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Final remarks}
-\frame{
-  {\bf Resumen de la presentación}
-
-  \begin{itemize}\itemsep1em
-    \item El
-    \item resumen
-  \end{itemize}
-}
 \end{document}
