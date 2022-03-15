@@ -8,7 +8,15 @@
 
 \input{tex/diapo_encabezado.tex}
 \input{tex/tikzlibrarybayesnet.code.tex}
-
+\newif\ifen
+\newif\ifes
+\newcommand{\en}[1]{\ifen#1\fi}
+\newcommand{\es}[1]{\ifes#1\fi}
+\entrue
+\newcommand{\E}{\en{S}\es{E}}
+\newcommand{\A}{\en{E}\es{A}}
+\newcommand{\Ee}{\en{s}\es{e}}
+\newcommand{\Aa}{\en{e}\es{a}}
 % Las siguientes líneas definen el footline.
 \makeatletter
 \setbeamertemplate{footline}
@@ -84,7 +92,7 @@
   \vfill
 
   {\LARGE\bf
-    Inferencia bayesiana: las verdades empíricas
+    Inferencia bayesiana
   }
 
   \line(1,0){250}
@@ -132,16 +140,64 @@
   \includegraphics[scale=0.32, bb= -0.7in -0.15in 0in 0in]{img/logo-dc.pdf}
 }
 
-% La siguiente es una tabla de contenidos (opcional)
-\begin{frame}[plain,noframenumbering]
- 
- \begin{textblock}{80}(4,04)
- \LARGE \textcolor{black!55}{Ciencias empíricas \\[-0.2cm] \Large creencias, datos y sorpresa }
+
+\begin{frame}[plain]
+ \begin{textblock}{160}(0,08) \centering
+  \Large La ciencia tiene pretensión de verdad
 \end{textblock}
 
- \begin{textblock}{47}(113,74)
-\centering \Large  \textcolor{black!5}{Supervivencia}
+ \begin{textblock}{80}(0,24) \centering
+ \large Verdades formales 
 \end{textblock}
+
+\begin{textblock}{60}(10,36) \centering
+ Validadas dentro de \\ sistemas axiomáticos cerrados 
+ 
+ \\[0.2cm]
+ 
+ \centering
+ 
+ Sin incertidumbre
+\end{textblock}
+
+\begin{textblock}{80}(80,24) \centering
+ \large Verdades empíricas
+\end{textblock}
+
+\begin{textblock}{60}(90,36) \centering
+ Validadas dentro de \\ sistemas naturales abiertos 
+ 
+ \\[0.2cm]
+ 
+ \centering
+ 
+ Con incertidumbre
+\end{textblock}
+
+\only<2>{
+\begin{textblock}{160}(0,66) \centering
+\large ¿Cuáles son entonces la verdades empíricas?
+\end{textblock}
+}
+\end{frame}
+
+\begin{frame}[plain]
+  \begin{textblock}{80}(34,14)
+ \Large \textcolor{black!50}{Sorpresa}
+\end{textblock}
+
+\begin{textblock}{47}(113,73.5)
+\centering \Large \textcolor{black!5}{Supervivencia}
+\end{textblock}
+
+\begin{textblock}{80}(103,27)
+\Large \textcolor{black!10}{Creencia}
+\end{textblock}
+
+\begin{textblock}{80}(44,61)
+\Large  \textcolor{black!15}{Dato}
+\end{textblock}
+
 
  %\vspace{2cm}brown
 %\maketitle
@@ -162,28 +218,96 @@
 \begin{frame}[plain]
  \begin{textblock}{160}(4,4)
  \centering
-  \Large Acuerdos intersubjetivos: fuente de las verdades empíricas
+  \Large Acuerdos intersubjetivos
  \end{textblock}
- \vspace{1cm}
- 
- \begin{textblock}{90}(10,20)
-
- \hspace{0.75cm} Monty Hall \\[0.2cm]
 
  
+ \only<1>{
+  \begin{textblock}{80}(-10,20) \centering
+ \scalebox{0.8}{
+\tikz{ %
+         \node[factor, minimum size=1cm] (p1) {} ;
+         \node[factor, minimum size=1cm, xshift=1.5cm] (p2) {} ;
+         \node[factor, minimum size=1cm, xshift=3cm] (p3) {} ;
+         
+         
+         \node[const, above=of p1, yshift=0.1cm] (np1) {\Large $?$};
+         \node[const, above=of p2, yshift=0.1cm] (np2) {\Large $?$};
+         \node[const, above=of p3, yshift=0.1cm] (np3) {\Large $?$};
+         } 
+}
+\end{textblock}
+% 
+}
+ 
+\only<2>{
+  \begin{textblock}{80}(-10,20) \centering
+ \scalebox{0.8}{
+\tikz{ %
+         \node[factor, minimum size=1cm] (p1) {} ;
+         \node[factor, minimum size=1cm, xshift=1.5cm] (p2) {} ;
+         \node[factor, minimum size=1cm, xshift=3cm] (p3) {} ;
+         
+         
+         \node[const, above=of p1, yshift=-0.05cm] (np1) {\Large $1/3$};
+         \node[const, above=of p2, yshift=-0.05cm] (np2) {\Large $1/3$};
+         \node[const, above=of p3, yshift=-0.05cm] (np3) {\Large $1/3$};
+         } 
+}
+\end{textblock}
+% 
+}
+
+\only<2->{
+\begin{textblock}{100}(55,24) \centering
+\large Principio de indiferencia \\
+\normalsize
+Primer acuerdo intersubjetivo en contextos de incertidumbre
+\end{textblock}
+}
+
+ 
+\only<3>{
+ \begin{textblock}{80}(-10,20) \centering
  \scalebox{0.8}{
 \tikz{ %
          \node[factor, minimum size=1cm] (p1) {\includegraphics[width=0.05\textwidth]{../auxiliar/images/cerradura.png}} ;
-         \only<1-4>{\node[factor, minimum size=1cm, xshift=1.5cm] (p2) {} ;}
-         \only<5-> {\node[det, minimum size=1cm, xshift=1.5cm] (p2) {\includegraphics[width=0.06\textwidth]{../auxiliar/images/dedo.png}} ;}
+         \node[det, minimum size=1cm, xshift=1.5cm] (p2) {\includegraphics[width=0.06\textwidth]{../auxiliar/images/dedo.png}} ;
          \node[factor, minimum size=1cm, xshift=3cm] (p3) {} ;
+         
+         
+         \node[const, above=of p1, yshift=0.1cm] (np1) {\Large $?$};
+         \node[const, above=of p2, yshift=0.1cm] (np2) {\Large $0$};
+         \node[const, above=of p3, yshift=0.1cm] (np3) {\Large $?$};
          } 
 }
+\end{textblock}
+}
 
-\vspace{0.8cm}
+\only<4->{
+ \begin{textblock}{80}(-10,20) \centering
+ \scalebox{0.8}{
+\tikz{ %
+         \node[factor, minimum size=1cm] (p1) {\includegraphics[width=0.05\textwidth]{../auxiliar/images/cerradura.png}} ;
+         \node[det, minimum size=1cm, xshift=1.5cm] (p2) {\includegraphics[width=0.06\textwidth]{../auxiliar/images/dedo.png}} ;
+         \node[factor, minimum size=1cm, xshift=3cm] (p3) {} ;
+         
+         
+         \node[const, above=of p1, yshift=-0.05cm] (np1) {\Large $1/3$};
+         \node[const, above=of p2, yshift=0.1cm] (np2) {\Large $0$};
+         \node[const, above=of p3, yshift=-0.05cm] (np3) {\Large $2/3$};
+         } 
+}
+\end{textblock}
+}
 
-\onslide<2->{
-\hspace{0.5cm} Modelo causal \\[0.3cm]
+
+\only<3->{
+\begin{textblock}{80}(-10,36) \centering
+Datos \\[0.5cm]
+
+\only<4->{
+ Modelo causal ``Monty Hall'' \\[0.3cm]
 \scalebox{0.6}{
 \tikz{        
     
@@ -202,51 +326,20 @@
 }
 }
 \end{textblock}
-
-
-\begin{textblock}{90}(60,18)
-Principios interculturales de acuerdos intersubjetivos: \\[0.15cm]
-\ \ \  $\bullet$ Principio de indiferencia\onslide<3->{:  regla del producto a priori} \\[0.05cm]
-\ \ \  $\bullet$ \only<2-3>{\textcolor{black!25}}{Principio de reciprocidad\onslide<4->{: regla de la suma} } \\[0.05cm]
-\ \ \  $\bullet$ \only<2-4>{\textcolor{black!25}}{Principio de coherencia\onslide<5->{: regla del producto a posteriori} }
-\end{textblock}
-
-\begin{textblock}{90}(60,48)
-
-\centering
-\onslide<3->{
-\hspace{-0.8cm} Creencia conjunta \\[0.1cm]
-  \begin{tabular}{|c|c|c|c|} \hline  \setlength\tabcolsep{0.4cm} 
- & \, $r_1$ \, &  \, $r_2$ \, & \, $r_3$ \,  \\ \hline 
-  $s_1$ & $0$ & $0$ & $0$ \\ \hline
-  $s_2$ & $1/6$ & $0$ & $1/3$ \\ \hline
-  $s_3$ & \only<3-4>{$1/6$}\only<5>{$0$} & \only<3-4>{$1/3$}\only<5>{$0$} & $0$  \\ \hline  
-  \end{tabular}}\onslide<4->{
-  \begin{tabular}{c} \setlength\tabcolsep{0.4cm} 
-   \\
-   $0$\\
-   $1/2$\\
-   \only<4>{$1/2$}\only<5>{$0$}\\
-  \end{tabular}} 
-%  
-%  \begin{tabular}{ccccc} \setlength\tabcolsep{0.4cm} 
-%  \,   \phantom{$s_3$} & \only<4>{$1/3$}\only<5>{$1/6$\ }\,   & \only<4>{$1/3$ \ }\only<5>{$0$\ }  \,    &   $1/3$ \ &  \hspace{0.8cm}
-%   \end{tabular}}
-%   
-\end{textblock}
-
-\only<4>{
-\begin{textblock}{90}(60,71) 
-\hspace{2.85cm} $1/3$ \hspace{0.35cm} $1/3$ \hspace{0.35cm} $1/3$
-\end{textblock}
 }
+
+
 \only<5>{
-\begin{textblock}{90}(60,71) 
-\hspace{2.85cm} $1/6$ \hspace{0.525cm} $0$ \hspace{0.525cm} $1/3$
+\begin{textblock}{100}(55,54) \centering
+\large Inferencia Bayesiana \\
+\normalsize
+Creencia previa que sigue siendo compatible con datos y modelo
 \end{textblock}
 }
 
 \end{frame}
+
+
 
 
 \begin{frame}[plain]
@@ -254,13 +347,13 @@ Principios interculturales de acuerdos intersubjetivos: \\[0.15cm]
 \centering \Large Modelos causales alternativos
 \end{textblock}
 
-\only<1->{
-\begin{textblock}{160}(16,12) 
+
+
+\begin{textblock}{160}(14,14) 
 \begin{equation*}
- P(\text{Modelo}|\text{Datos}) = \frac{\only<1->{\overbrace{P(\text{Data}|\text{Modelo})}^{\text{Predicción a priori}}} \only<1->{P(\text{Modelo})} }{ P(\text{Data})} \phantom{\frac{\overbrace{P(\text{Datos}|\text{Modelo})}^{\text{Evidencia}}}{ P(\text{Datos})}}
+ P(\text{Modelo}|\text{Datos}) = \frac{\only<1->{\overbrace{P(\text{Data}|\text{Modelo})}^{\text{\footnotesize Predicción a priori}}} \only<1->{P(\text{Modelo})} }{ P(\text{Data})} \phantom{\frac{\overbrace{P(\text{Datos}|\text{Modelo})}^{\text{Evidencia}}}{ P(\text{Datos})}}
 \end{equation*}
 \end{textblock}
-}
 % 
 % \only<2>{
 % \begin{textblock}{160}(0,47) 
@@ -338,17 +431,30 @@ Estimador de habilidad estado-del-arte
 \begin{textblock}{160}(0,4)
 \centering \Large Poster 2 \\  
 \large 
-Ventaja evolutva de la cooperación y la especialización.
+Ventaja de la cooperación \textcolor{gray}{y la especialización}
 \end{textblock}
 
-
-\begin{textblock}{80}(0,18) \centering
-\includegraphics[width=\linewidth]{../figures/pdf/ergodicity_individual_trayectories_y.pdf}
+\begin{textblock}{160}(0,14) \centering
+\begin{equation*} \label{eq:modelo_exponencial}
+f(\Aa) =
+\begin{cases}
+ 1.5 & \Aa = \text{ Cara } \\
+ 0.6 & \Aa = \text{ Seca }
+\end{cases}
+\end{equation*}\\[-1.5cm]
 \end{textblock}
 
-\begin{textblock}{80}(80,18) \centering
-\includegraphics[width=\linewidth]{../figures/pdf/ergodicity_desertion.pdf}
+\only<2->{
+\begin{textblock}{80}(0,36) \centering
+\includegraphics[width=0.90\linewidth]{../figures/pdf/ergodicity_individual_trayectories_y.pdf}
 \end{textblock}
+}
+
+\only<3>{
+\begin{textblock}{80}(80,36) \centering
+\includegraphics[width=0.90\linewidth]{../figures/pdf/ergodicity_desertion.pdf}
+\end{textblock}
+}
 
 \end{frame}
 
