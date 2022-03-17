@@ -169,7 +169,7 @@
   \end{subfigure}
 \end{figure}
 \vspace{-2cm}
-{\Large \hspace{5cm} (a) Model \hspace{14cm} (b) Posterior }
+{\Large \hspace{5cm} (a) Model \hspace{9cm} (b) A winner's posterior }
 
 
 % \en{ most commons  (such as Elo and TrueSkill) cannot obtain reliable initial estimates or guarantee comparability between estimates distant in time and space. }%because they do not propagate historical information properly through the system. }%
@@ -344,20 +344,20 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 
 
 \textbf{Introduc\en{tion}\es{ción}}
-\en{The evolutionary growth of a lineage over time, $\omega(t)$, is governed by a sequence of survival and reproductive rates $f(\cdot)$ }%
+\en{In evolutionary theory a lineage growth is a multiplicative process: a sequence of survival and reproductive rates $f(\cdot)$ }%
 \es{El crecimiento evolutivo de un linaje en el tiempo, $\omega(t)$, esta gobernado por una secuencias estocástica de tasas de supervivencia y reproducción $f(\cdot)$ }%
 %
-\vspace{-1cm}
+\vspace{-1.3cm}
 \begin{equation*} \label{eq:modelo_exponencial}
-\omega(T) = \prod_t^T f(\Aa_t) \approx g^T \ \ \text{ with } \ \ f(\Aa) =
+\omega(T) = \prod_t^T f(\Aa_t) \approx r^T \ \ \text{ with } \ \ f(\Aa) =
 \begin{cases}
  1.5 & \Aa = \text{ \en{Head}\es{Cara} } \\
  0.6 & \Aa = \text{ \en{Tail}\es{Sello} }
 \end{cases}
-\end{equation*}\\[-1.5cm]
+\end{equation*}\\[-1.2cm]
 %
-\en{Which is the characteristic growth rate $g$? }%
-\es{¿Cuál es la tasa de crecimiento característica $g$? }%
+\en{Which is the characteristic growth rate $r$? }%
+\es{¿Cuál es la tasa de crecimiento característica $r$? }%
 
 \vspace{0.5cm}
 
@@ -374,8 +374,8 @@ P(\text{Dat\en{a}\es{os}}|\text{Model\es{o}}) & = P(d_1|\text{Model\es{o}})P(d_2
 \end{figure}
 
 
-\en{Generalizing $f(\Ee,\Aa) = \Ee^\Aa(1-\Ee)^\Aa$ with $\Ee \in [0,1]$, the \emph{replicator dynamic} equation states that the proportion of a strategy $\Ee$ is }%
-\es{Generalizando $f(\Ee,\Aa) = \Ee^\Aa(1-\Ee)^\Aa$ con $\Ee \in [0,1]$, la ecuación \emph{replicator dynamic} afirma que la proporción de una estrategia en la población es }%
+\en{Generalizing $f(\Ee,\Aa) \propto \Ee^\Aa(1-\Ee)^\Aa$ with $\Ee \in [0,1]$, the \emph{replicator dynamic} equation states that the proportion of a strategy $\Ee$ is }%
+\es{Generalizando $f(\Ee,\Aa) \propto  \Ee^\Aa(1-\Ee)^\Aa$ con $\Ee \in [0,1]$, la ecuación \emph{replicator dynamic} afirma que la proporción de una estrategia en la población es }%
 % schuster1983-replicatorDynamics, hofbauer2003-evolutionaryGameDynamics
 %
 \begin{equation} \label{eq:replicator_dynamic}  \tag{Isomorphism}
@@ -385,8 +385,8 @@ P(\Ee|\vec{\Aa}^{1:T}) = \frac{P(\Ee|\vec{\Aa}^{\,1:T-1}) f(\Ee,\Aa^T)}{\sum_s P
 \end{equation}
 %
 \textbf{Result\en{s}\es{ados}.}
-\en{Cooperation reduces fluctuations, increasing the growth rate and defection increases fluctuations, reducing the growth rate. }%
-\es{La cooperación reduce las fluctuaciones, aumentando la tasa de crecimiento y la desercion aumenta las fluctuaciones, reduciendo la tasa de crecimiento. }%
+\en{Cooperation (pooling and sharing) benefits everyone. Defection increases fluctuations reducing even their own growth rate. }%
+\es{La cooperación beneficia a todos. Los desertores reducen su priopia tasa de crecimiento sin necesidad de introducir castigos. }%
 %
 \begin{figure}[H]
     \centering
@@ -396,13 +396,13 @@ P(\Ee|\vec{\Aa}^{1:T}) = \frac{P(\Ee|\vec{\Aa}^{\,1:T-1}) f(\Ee,\Aa^T)}{\sum_s P
 \end{figure}
 \vspace{-0.5cm}
 %
-\en{This is why multilevel selection favors cooperation. }
+\en{This is why multilevel selection favors cooperative individuals. }
 \es{Por eso la selección multivinivel favorece la cooperación. }
 %
-\vspace{-0.5cm}
+\vspace{-0.3cm}
 \begin{equation*}\label{eq:posterior_multinivel}
 \begin{split}
-\underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g} \underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T}, g)}_{\text{\Large \en{Level 1 selection}\es{Selección de nivel 1}}}  \underbrace{P(g|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Level 2 selection}\es{Selección de nivel 2}}}
+\underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Multilevel selection}\es{Selección multinivel}}} = \sum_{g} \ \ \underbrace{P(\texttt{coop}|\vec{\Aa}^{\,1:T}, g)}_{\text{\Large \en{Individual selection}\es{Selección de individuos}}} \ \ \ \cdot \underbrace{P(g|\vec{\Aa}^{\,1:T})}_{\text{\Large \en{Group selection}\es{Selección de grupo}}}
 \end{split}
 \end{equation*}
 
@@ -425,13 +425,13 @@ P(\Ee|\vec{\Aa}^{1:T}) = \frac{P(\Ee|\vec{\Aa}^{\,1:T-1}) f(\Ee,\Aa^T)}{\sum_s P
 
 \vspace{0.5cm}
 
-\textbf{Conclution.} The advantage in favor of cooperation and specialization is due to the multiplicative nature of evolutionary and probabilistic selection processes.
+\textbf{Conclution.} An advantage in favor of cooperation and specialization arises in our simple causal model because of the multiplicative nature of evolutionary and probabilistic selection processes.
 
 
 \end{multicols}
 
- \vspace{0.4cm}
-\huge \en{Did you find the commonalities between the two papers?}\es{¿Encontraste el punto en común entre los dos trabajos?}
+\vspace{1cm}
+\LARGE \en{Did you find the commonalities between the two papers?}\es{¿Encontraste el punto en común entre los dos trabajos?}
 
  
 % { \footnotesize
