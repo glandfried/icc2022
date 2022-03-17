@@ -12,14 +12,17 @@ Por ejemplo, sabemos que detrás de alguna de las cajas hay un regalo.
 ¿Dónde está el regalo?
 En estos casos en los que no tenemos preferencia por ninguna de las opciones, todos vamos a estar de acuerdo en dividir las creencias en partes iguales.
 Este principio se lo conoce como "de indiferencia", y garantiza un primer acuerdo intersubjetivos en contextos de incertidumbre.
-¿Ahora, cómo podemos dar continudidad a los acuerdo intersubjetivos?
+Supongamos que recibimos nueva información.
+¿Cómo podemos dar continudidad a los acuerdo intersubjetivos?
 La inferencia bayesiana no es más que la creencia previa que sigue siendo compatible con los datos y los modelos causales.
 
 Los modelos causales también son creencia, por lo que tenemos un método intersubjetivo para seleccionar modelos causales alternativos, que depende de la predicción a priori de los datos.
 Si los datos del ejemplo anterior se producen en base al modelo causal "Monty Hall", rápidamente poremos reconocerlo.
 
 En la primera parte del poster les voy a contar cómo funciona el estimador de habilidad estado-del-arte en la industria del video juego.
-Estas son las habilidades de los jugadores de tenis profesionales.
+Nuestra implementación es la primera en Julia, Python y R.
+Este modelo garantiza estimaciones iniciales fiables y comparabilidad histórica gracias a que resuelve la inferencia usando una única red Bayesiana que contiene toda la historia de partidas.
+Éstas son estrimaciones las habilidades de los jugadores de tenis profesionales.
  
 Y en la segunda parte del poster les voy a contar porqué existe una ventaja evolutiva a favor de la cooperación y la especialización.
 Les dejo esta pregunta.
